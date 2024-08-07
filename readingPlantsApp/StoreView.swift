@@ -9,7 +9,12 @@ import SwiftUI
 
 struct StoreView: View {
     var body: some View {
-        Text("StoreView")
+        ZStack {
+            
+            Image("house1")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        }
     }
 }
 

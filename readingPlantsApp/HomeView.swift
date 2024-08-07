@@ -1,128 +1,148 @@
 import SwiftUI
 
-//TODO: make background color of app #F2F2F2
-
 struct HomeView: View {
     var body: some View {
         TabView {
-            // First tab
-            VStack {
-                HStack {
-                    Text("Home")
-                        .font(.system(size: 35))
-                        .bold()
-                    
-                    Spacer()
-                    
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                        SwiftUI.Image(systemName: "gearshape")
-                    })
-                    .foregroundColor(Color.gray)
-                    .imageScale(.large)
-                }.padding()
-                
-                HStack {
-                    Spacer()
-                    
-                    Image(systemName: "flame")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                        .padding([.bottom, .top], 5)
-                        .foregroundStyle(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [.orange, .red, .yellow]),
-                                    startPoint: .bottom,
-                                    endPoint: .top
-                                )
-                            )
-                    Text("1")
-                    
-                    Spacer()
-                    
-                    Image(systemName: "fitness.timer")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(Color.blue)
-                    Text("1:25")
-                    
-                    Spacer()
-                    
-                    Image(systemName: "star.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                        .foregroundStyle(
-                            LinearGradient(
-                                gradient: Gradient(colors: [.orange, .yellow]),
-                                startPoint: .bottom,
-                                endPoint: .top)
-                            )
-                    Text("33")
-                    
-                    Spacer()
+            mainContent
+                .tabItem {
+                    Label("Home", systemImage: "tree.fill")
                 }
-                .background(Color.white)
-                .cornerRadius(30)
-                .shadow(radius: 2.5)
-                .padding()
-                
-                Spacer()
-                
-                Image("plantPlaceholder")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(.tint)
-                    .frame(width: 250, height: 250)
-                
-//                Spacer()
-                
-                Button(action: {print("Choose plant pressed")}, label: {
-                    Text("Choose Plant")
-                        .foregroundColor(.white)
-                        .padding()
-                        .bold()
-                })
-                .background(
-                    Color.green
-                        .cornerRadius(30)
-                        .shadow(radius: 2)
-                )
-                
-                Button(action: {print("Choose plant pressed")}, label: {
-                    Text("Begin Reading")
-                        .foregroundColor(.white)
-                        .padding()
-                        .bold()
-                })
-                .background(
-                    Color.green
-                        .cornerRadius(30)
-                        .shadow(radius: 2)
-                )
-                
-                Spacer()
-            }
-            .tabItem {
-                Label("Home", systemImage: "tree.fill")
-            }
             
-            // Second tab
             LibraryView()
                 .tabItem {
                     Label("Library", systemImage: "books.vertical.fill")
                 }
             
-            // Third tab
             StoreView()
                 .tabItem {
                     Label("Store", systemImage: "cart")
                 }
         }
-        .accentColor(.green) // Optional: Customize the tab bar color
+        .accentColor(Constants.green)
+    }
+    
+    //MARK: Components
+    private var mainContent: some View {
+        VStack {
+            titleBar
+            statsBar
+            Spacer()
+            chosenPlant
+            Spacer()
+            choosePlantButton
+            beginReadingButton
+            Spacer()
+        }
+        .padding()
+        .background(Color(Constants.backgroundGray))
+    }
+    
+    private var titleBar: some View {
+        HStack {
+            Text("Home")
+                .font(.system(size: 35))
+                .bold()
+            Spacer()
+            settingsButton
+        }
+    }
+    
+    private var settingsButton: some View {
+        Button(action: { print("Settings button pressed") }) {
+            Image(systemName: "gearshape")
+                .foregroundColor(Constants.green)
+                .imageScale(.large)
+        }
+    }
+    
+    private var statsBar: some View {
+        HStack {
+            statItem(icon: flameIcon, text: "1")
+            statItem(icon: timerIcon, text: "1:25")
+            statItem(icon: starIcon, text: "33")
+        }
+        .padding()
+        .background(Color.white)
+        .cornerRadius(30)
+//        .shadow(radius: 2.5)
+    }
+    
+    private func statItem(icon: some View, text: String) -> some View {
+        HStack {
+            icon
+            Text(text)
+        }
+    }
+    
+    private var flameIcon: some View {
+        Image(systemName: "flame")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 30, height: 30)
+            .foregroundStyle(
+                LinearGradient(
+                    colors: [.orange, .red, .yellow],
+                    startPoint: .bottom,
+                    endPoint: .top
+                )
+            )
+    }
+    
+    private var timerIcon: some View {
+        Image(systemName: "fitness.timer")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 30, height: 30)
+            .foregroundColor(.blue)
+    }
+    
+    private var starIcon: some View {
+        Image(systemName: "star.fill")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 30, height: 30)
+            .foregroundStyle(
+                LinearGradient(
+                    colors: [.orange, .yellow],
+                    startPoint: .bottom,
+                    endPoint: .top
+                )
+            )
+    }
+    
+    private var chosenPlant: some View {
+        Image("purpleFlower")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .foregroundStyle(.tint)
+            .frame(width: 250, height: 250)
+    }
+    
+    private var choosePlantButton: some View {
+        actionButton(title: "Choose Plant", action: { print("Choose Plant pressed") })
+    }
+    
+    private var beginReadingButton: some View {
+        actionButton(title: "Begin Reading", action: { print("Begin Reading pressed") })
+    }
+    
+    private func actionButton(title: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Text(title)
+                .foregroundColor(Color(hex: "#81A263"))
+                .padding()
+                .bold()
+                .frame(maxWidth: .infinity)
+                .background(
+                    Color(.white)
+                    .cornerRadius(30)
+//                        .shadow(radius: 2)
+                )
+        }
     }
 }
+
+
 
 #Preview {
     HomeView()

@@ -9,7 +9,56 @@ import SwiftUI
 
 struct LibraryView: View {
     var body: some View {
-        Text("Library")
+        
+        VStack {
+            
+            // Title Bar
+            HStack {
+                Text("Library")
+                    .padding()
+                    .font(.system(size: 35))
+                    .bold()
+                
+                Spacer()
+                
+                Button(action: { print("Ellipsis pressed") }, label: {
+                    Image(systemName: "ellipsis")
+                })
+                .foregroundColor(Constants.green)
+                .padding()
+                .background(Color.white)
+                .cornerRadius(20)
+            }
+            .padding()
+            
+            // Lists button
+            HStack {
+                Button(action: { print("Lists button pressed") }, label: {
+                    Image(systemName: "list.bullet")
+                    Text("Lists")
+                    Spacer()
+                    Image(systemName: "chevron.forward")
+                        .padding()
+                })
+                .foregroundColor(.black)
+                .overlay(
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(.gray.opacity(0.2)),
+                    alignment: .bottom
+                )
+                .overlay(
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(.gray.opacity(0.2)),
+                    alignment: .top
+                )
+            }
+            .padding()
+            
+            Spacer()
+        }
+        .background(Constants.backgroundGray)
     }
 }
 

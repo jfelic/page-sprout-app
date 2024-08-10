@@ -15,6 +15,8 @@
 		B81C050E2C5C4435000FC756 /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C050D2C5C4435000FC756 /* StoreView.swift */; };
 		B824C1292C64283B00D65E39 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824C1282C64283B00D65E39 /* Constants.swift */; };
 		B824C12B2C6428CC00D65E39 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824C12A2C6428CC00D65E39 /* Color+Hex.swift */; };
+		B86F0EDC2C66F57800ECD4AE /* Lexend-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B86F0EDB2C66F55C00ECD4AE /* Lexend-VariableFont_wght.ttf */; };
+		B86F0EDE2C66F69700ECD4AE /* CaveatBrush-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B86F0EDD2C66F69700ECD4AE /* CaveatBrush-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,9 @@
 		B81C050D2C5C4435000FC756 /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		B824C1282C64283B00D65E39 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B824C12A2C6428CC00D65E39 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		B86F0EDB2C66F55C00ECD4AE /* Lexend-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lexend-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		B86F0EDD2C66F69700ECD4AE /* CaveatBrush-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "CaveatBrush-Regular.ttf"; path = "../../../../../Downloads/Caveat_Brush,Lexend/Caveat_Brush/CaveatBrush-Regular.ttf"; sourceTree = "<group>"; };
+		B86F0EDF2C66FDBB00ECD4AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +64,8 @@
 		B81C04FC2C5C3BBD000FC756 /* readingPlantsApp */ = {
 			isa = PBXGroup;
 			children = (
+				B86F0EDF2C66FDBB00ECD4AE /* Info.plist */,
+				B86F0EDA2C66F55600ECD4AE /* Fonts */,
 				B824C12A2C6428CC00D65E39 /* Color+Hex.swift */,
 				B824C1282C64283B00D65E39 /* Constants.swift */,
 				B81C050D2C5C4435000FC756 /* StoreView.swift */,
@@ -77,6 +84,15 @@
 				B81C05042C5C3BC0000FC756 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B86F0EDA2C66F55600ECD4AE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B86F0EDD2C66F69700ECD4AE /* CaveatBrush-Regular.ttf */,
+				B86F0EDB2C66F55C00ECD4AE /* Lexend-VariableFont_wght.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +155,8 @@
 			files = (
 				B81C05052C5C3BC0000FC756 /* Preview Assets.xcassets in Resources */,
 				B81C05022C5C3BC0000FC756 /* Assets.xcassets in Resources */,
+				B86F0EDE2C66F69700ECD4AE /* CaveatBrush-Regular.ttf in Resources */,
+				B86F0EDC2C66F57800ECD4AE /* Lexend-VariableFont_wght.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +309,7 @@
 				DEVELOPMENT_TEAM = K4Z2G62S65;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = readingPlantsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -320,6 +339,7 @@
 				DEVELOPMENT_TEAM = K4Z2G62S65;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = readingPlantsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -18,13 +18,14 @@ struct LibraryView: View {
                     .padding()
                     .font(.system(size: 35))
                     .bold()
+                    .foregroundColor(Constants.green4)
                 
                 Spacer()
                 
                 Button(action: { print("Ellipsis pressed") }, label: {
                     Image(systemName: "ellipsis")
                 })
-                .foregroundColor(Constants.green)
+                .foregroundColor(Constants.green2)
                 .padding()
                 .background(Color.white)
                 .cornerRadius(20)
@@ -58,7 +59,7 @@ struct LibraryView: View {
             
             Spacer()
         }
-        .background(Constants.backgroundGray)
+        .background(Constants.green1)
     }
 }
 

@@ -64,9 +64,9 @@
 		B81C04FC2C5C3BBD000FC756 /* readingPlantsApp */ = {
 			isa = PBXGroup;
 			children = (
+				B84EFF802C672CE000DBC1E9 /* Extensions */,
 				B86F0EDF2C66FDBB00ECD4AE /* Info.plist */,
 				B86F0EDA2C66F55600ECD4AE /* Fonts */,
-				B824C12A2C6428CC00D65E39 /* Color+Hex.swift */,
 				B824C1282C64283B00D65E39 /* Constants.swift */,
 				B81C050D2C5C4435000FC756 /* StoreView.swift */,
 				B81C050B2C5C4406000FC756 /* LibraryView.swift */,
@@ -84,6 +84,14 @@
 				B81C05042C5C3BC0000FC756 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B84EFF802C672CE000DBC1E9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B824C12A2C6428CC00D65E39 /* Color+Hex.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B86F0EDA2C66F55600ECD4AE /* Fonts */ = {

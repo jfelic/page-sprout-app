@@ -15,6 +15,7 @@ struct StoreView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
         }
+        .background(Color(Constants.green1))
     }
 }
 

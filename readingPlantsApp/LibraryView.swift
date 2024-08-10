@@ -1,65 +1,122 @@
-//
-//  LibraryView.swift
-//  readingPlantsApp
-//
-//  Created by Julian Feliciano on 8/1/24.
-//
-
 import SwiftUI
 
+struct Book: Identifiable {
+    let id = UUID()
+    let title: String
+    let author: String
+    let coverImage: String
+    let progress: Double = 0
+}
+
 struct LibraryView: View {
+    @State private var searchText = ""
+    
+    let books: [Book] = [
+        Book(title: "Meditations", author: "Marcus Aurelius", coverImage: "meditations"),
+        Book(title: "Man's Search For Meaning", author: "Viktor Frankl", coverImage: "mansSearchForMeaning"),
+        Book(title: "Fear and Loathing in Las Vegas", author: "Hunter S. Thompson", coverImage: "fearAndLoathing"),
+        Book(title: "Meditations", author: "Marcus Aurelius", coverImage: "meditations"),
+        Book(title: "Man's Search For Meaning", author: "Viktor Frankl", coverImage: "mansSearchForMeaning"),
+        Book(title: "Fear and Loathing in Las Vegas", author: "Hunter S. Thompson", coverImage: "fearAndLoathing")
+    ]
+    
+    let columns = [GridItem(.flexible()), GridItem(.flexible())]
+    
     var body: some View {
-        
-        VStack {
-            
-            // Title Bar
-            HStack {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
                 Text("Library")
-                    .padding()
-                    .font(.system(size: 35))
+                    .font(.system(size: 35, weight: .bold, design: .rounded))
                     .bold()
-                    .foregroundColor(Constants.green4)
+                    .foregroundColor(Constants.white)
+                    .padding([.leading, .trailing, .top], 20)
                 
-                Spacer()
+                searchBar
+                    .padding([.horizontal], 20)
                 
-                Button(action: { print("Ellipsis pressed") }, label: {
-                    Image(systemName: "ellipsis")
-                })
-                .foregroundColor(Constants.green2)
-                .padding()
-                .background(Color.white)
-                .cornerRadius(20)
-            }
-            .padding()
-            
-            // Lists button
-            HStack {
-                Button(action: { print("Lists button pressed") }, label: {
-                    Image(systemName: "list.bullet")
-                    Text("Lists")
-                    Spacer()
-                    Image(systemName: "chevron.forward")
-                        .padding()
-                })
-                .foregroundColor(.black)
-                .overlay(
-                    Rectangle()
-                        .frame(height: 1)
-                        .foregroundColor(.gray.opacity(0.2)),
-                    alignment: .bottom
-                )
-                .overlay(
-                    Rectangle()
-                        .frame(height: 1)
-                        .foregroundColor(.gray.opacity(0.2)),
-                    alignment: .top
+                listsButton
+                
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(books) { book in
+                        BookView(book: book)
+                    }
+                }
+                .background(Constants.green1)
+                .frame(maxWidth: .infinity)
+                .clipShape(
+                    .rect(
+                        topLeadingRadius: 30,
+                        bottomLeadingRadius: 0,
+                        bottomTrailingRadius: 0,
+                        topTrailingRadius: 20
+                    )
                 )
             }
-            .padding()
-            
-            Spacer()
         }
-        .background(Constants.green1)
+        .background(Constants.green2)
+    }
+    
+    private var searchBar: some View {
+        HStack {
+            Image(systemName: "magnifyingglass")
+            TextField("Search", text: $searchText)
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
+
+            if !searchText.isEmpty {
+                Button(action: { searchText = "" }) {
+                    Image(systemName: "xmark.circle.fill")
+                }
+            }
+        }
+        .padding(7.5)
+        .background(Constants.white)
+        .cornerRadius(10)
+        .foregroundColor(Constants.green3)
+    }
+    
+    private var listsButton: some View {
+        Button(action: { print("Lists button pressed") }) {
+            HStack {
+                Image(systemName: "list.bullet")
+                Text("Lists")
+                    .font(.system(size: 18, weight: .bold, design: .rounded))
+                Spacer()
+                Image(systemName: "chevron.forward")
+            }
+            .foregroundColor(Constants.white)
+            .padding()
+            .cornerRadius(10)
+            .overlay(
+                Rectangle()
+                    .frame(height: 1)
+                    .foregroundColor(.white.opacity(0.2)),
+                alignment: .bottom
+            )
+            .overlay(
+                Rectangle()
+                    .frame(height: 1)
+                    .foregroundColor(.white.opacity(0.2)),
+                alignment: .top
+            )
+        }
+    }
+}
+
+struct BookView: View {
+    let book: Book
+    
+    var body: some View {
+        VStack {
+            Image(book.coverImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 200, height: 200)
+            Text(book.title)
+                .font(.system(size: 12, weight: .semibold, design: .rounded))
+                .lineLimit(1)
+                .foregroundColor(Constants.green4)
+        }
+        .padding()
     }
 }
 

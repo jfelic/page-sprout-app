@@ -18,14 +18,13 @@ struct HomeView: View {
                     Label("Store", systemImage: "cart")
                 }
         }
-        .accentColor(Constants.green2)
+        .accentColor(Constants.green4)
     }
     
     //MARK: Components
     private var mainContent: some View {
         VStack {
             titleBar
-                .font(Font.custom("CaveatBrush-Regular", size: 20))
             statsBar
             Spacer()
             chosenPlant
@@ -41,8 +40,7 @@ struct HomeView: View {
     private var titleBar: some View {
         HStack {
             Text("Home")
-                .font(.system(size: 35))
-                .bold()
+                .font(.system(size: 35, weight: .bold, design: .rounded))
                 .foregroundColor(Constants.green4)
             Spacer()
             settingsButton
@@ -76,6 +74,8 @@ struct HomeView: View {
         HStack {
             icon
             Text(text)
+                .foregroundColor(Constants.green4)
+                .font(.system(size: 15, weight: .semibold, design: .rounded))
         }
     }
     
@@ -124,12 +124,11 @@ struct HomeView: View {
             Text(title)
                 .foregroundColor(Constants.white)
                 .padding()
-                .bold()
+                .font(.system(size: 18, weight: .bold, design: .rounded))
                 .frame(maxWidth: .infinity)
                 .background(
                     Color(Constants.green2)
                     .cornerRadius(30)
-//                        .shadow(radius: 2)
                 )
         }
     }

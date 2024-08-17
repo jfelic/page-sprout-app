@@ -19,6 +19,10 @@ struct HomeView: View {
                 }
         }
         .accentColor(Constants.green4)
+        .onAppear{
+            UITabBar.appearance().backgroundColor = UIColor(Constants.green1)
+            UITabBar.appearance().unselectedItemTintColor = UIColor(Constants.green3)
+        }
     }
     
     //MARK: Components
@@ -133,8 +137,6 @@ struct HomeView: View {
         }
     }
 }
-
-
 
 #Preview {
     HomeView()

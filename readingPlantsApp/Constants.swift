@@ -20,4 +20,7 @@ struct Constants {
     static let yellow = Color(hex: "FFD250")
     static let red = Color(hex: "FF5A00")
     static let clockBlue = Color(hex: "4A90E2")
+    static let sfFont: (CGFloat, Font.Weight) -> Font = { size, weight in
+            .system(size: size, weight: weight, design: .rounded)
+    }
 }

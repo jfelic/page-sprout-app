@@ -15,9 +15,9 @@ struct LibraryView: View {
         Book(title: "Meditations", author: "Marcus Aurelius", coverImage: "meditations"),
         Book(title: "Man's Search For Meaning", author: "Viktor Frankl", coverImage: "mansSearchForMeaning"),
         Book(title: "Fear and Loathing in Las Vegas", author: "Hunter S. Thompson", coverImage: "fearAndLoathing"),
-        Book(title: "Meditations", author: "Marcus Aurelius", coverImage: "meditations"),
-        Book(title: "Man's Search For Meaning", author: "Viktor Frankl", coverImage: "mansSearchForMeaning"),
-        Book(title: "Fear and Loathing in Las Vegas", author: "Hunter S. Thompson", coverImage: "fearAndLoathing")
+        Book(title: "The Hobbit", author: "J.R. Tolkien", coverImage: "theHobbit"),
+        Book(title: "The Stranger", author: "Albert Camus", coverImage: "theStrangerCamus"),
+        Book(title: "Women", author: "Charles Bukowski", coverImage: "women")
     ]
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
@@ -42,7 +42,6 @@ struct LibraryView: View {
                     }
                 }
                 .background(Constants.green1)
-                .frame(maxWidth: .infinity)
                 .clipShape(
                     .rect(
                         topLeadingRadius: 30,
@@ -54,6 +53,23 @@ struct LibraryView: View {
             }
         }
         .background(Constants.green2)
+        .overlay(
+            Button(action: { print("Add book pressed") }) {
+                HStack{
+                    Text("New")
+                    Image(systemName: "plus")
+                }
+            }
+            .foregroundColor(.white)
+            .font(.system(size: 12, weight: .bold, design: .rounded))
+            .padding()
+            .background(Color(Constants.green2))
+            .shadow(radius: 1)
+            .cornerRadius(20)
+            .padding(),
+            alignment: .bottomTrailing
+            
+        )
     }
     
     private var searchBar: some View {
